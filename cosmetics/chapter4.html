@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>第4章　全部を同じように管理しない：大事な商品を見分けよう｜コスメショップの在庫管理・サプライチェーン</title>
+<link href="../assets/style.css" rel="stylesheet"/>
+</head>
+<body class="chapter-page">
+<header class="site-header">
+<div class="site-header-inner">
+<a class="brand" href="../index.html">
+<img alt="東京海洋大学シンボルマーク" class="brand-logo" src="../assets/tumsat_symbol.png"/>
+<span class="brand-text">東京海洋大学 海洋工学部<br/><strong>流通情報工学科</strong></span>
+</a>
+<nav aria-label="主要メニュー" class="site-nav">
+<a href="../index.html">トップ</a>
+</nav>
+</div>
+</header>
+<main class="chapter-container">
+<div class="breadcrumb"><a href="../index.html">トップ</a> / <a href="index.html">コスメ教材</a> / 第4章</div>
+<div class="chapter-layout">
+<article class="article-card">
+<h1 id="第4章-全部を同じように管理しない-大事な商品を見分けよう">第4章　全部を同じように管理しない：大事な商品を見分けよう</h1>
+<p>コスメショップには、たくさんの商品があります。
+けれども、すべての商品を同じように管理するのは大変です。
+よく売れる商品、高くて売れ残ると困る商品、欠品するとお客さんががっかりする商品など、商品ごとに特徴があります。
+たとえば、化粧水は毎日よく売れるかもしれません。
+美容液は販売数は少ないかもしれませんが、単価が高いので、売上金額では大きな存在になるかもしれません。
+日焼け止めは季節によって急に売れるので、品切れに注意が必要かもしれません。
+この章では、商品を <strong>販売数</strong>、 <strong>単価</strong>、
+<strong>売上金額</strong>、 <strong>欠品日数</strong>
+から見て、どの商品を大事に管理するべきか考えます。</p>
+<h2 id="第4章-例題パート">第4章　例題パート</h2>
+<h2 id="例題4-商品を-売れ方-と-金額-で分けて見てみよう">例題4　商品を「売れ方」と「金額」で分けて見てみよう</h2>
+<p>次の表は、あるコスメショップの1週間の販売データです。</p>
+<h3 id="入力する表">入力する表</h3>
+<table class="data-table">
+<thead>
+<tr><th>商品名</th><th>カテゴリ</th><th>単価（円）</th><th>販売数</th><th>欠品日数</th></tr>
+</thead>
+<tbody>
+<tr><td>うるおい化粧水</td><td>スキンケア</td><td>1200</td><td>32</td><td>0</td></tr>
+<tr><td>しっとり乳液</td><td>スキンケア</td><td>1400</td><td>24</td><td>1</td></tr>
+<tr><td>UVジェル</td><td>季節商品</td><td>980</td><td>28</td><td>3</td></tr>
+<tr><td>クッションファンデ</td><td>ベースメイク</td><td>2800</td><td>15</td><td>1</td></tr>
+<tr><td>リップティント</td><td>ポイントメイク</td><td>1500</td><td>20</td><td>2</td></tr>
+<tr><td>アイシャドウパレット</td><td>ポイントメイク</td><td>2200</td><td>11</td><td>0</td></tr>
+<tr><td>美容液</td><td>スキンケア</td><td>3600</td><td>7</td><td>0</td></tr>
+<tr><td>ハンドクリーム</td><td>季節商品</td><td>800</td><td>18</td><td>2</td></tr>
+</tbody>
+</table>
+<h2 id="作業1-売上金額を計算する">作業1　売上金額を計算する</h2>
+<p>まず、商品ごとの売上金額を計算します。</p>
+<blockquote>
+<p>売上金額 ＝ 単価 × 販売数</p>
+</blockquote>
+<p>たとえば、うるおい化粧水は、</p>
+<blockquote>
+<p>1200 × 32 ＝ 38400</p>
+</blockquote>
+<p>なので、売上金額は38400円です。
+表に「売上金額」の列を追加しましょう。</p>
+<h3 id="売上金額を追加した表">売上金額を追加した表</h3>
+<table class="data-table">
+<thead>
+<tr><th>商品名</th><th>カテゴリ</th><th>単価（円）</th><th>販売数</th><th>欠品日数</th><th>売上金額（円）</th></tr>
+</thead>
+<tbody>
+<tr><td>うるおい化粧水</td><td>スキンケア</td><td>1200</td><td>32</td><td>0</td><td>38400</td></tr>
+<tr><td>しっとり乳液</td><td>スキンケア</td><td>1400</td><td>24</td><td>1</td><td></td></tr>
+<tr><td>UVジェル</td><td>季節商品</td><td>980</td><td>28</td><td>3</td><td></td></tr>
+<tr><td>クッションファンデ</td><td>ベースメイク</td><td>2800</td><td>15</td><td>1</td><td></td></tr>
+<tr><td>リップティント</td><td>ポイントメイク</td><td>1500</td><td>20</td><td>2</td><td></td></tr>
+<tr><td>アイシャドウパレット</td><td>ポイントメイク</td><td>2200</td><td>11</td><td>0</td><td></td></tr>
+<tr><td>美容液</td><td>スキンケア</td><td>3600</td><td>7</td><td>0</td><td></td></tr>
+<tr><td>ハンドクリーム</td><td>季節商品</td><td>800</td><td>18</td><td>2</td><td></td></tr>
+</tbody>
+</table>
+<p>計算が終わったら、売上金額が大きい順に並べ替えてみましょう。
+販売数が多い商品と、売上金額が大きい商品は同じでしょうか。
+違うでしょうか。</p>
+<h2 id="作業2-商品別の売上金額の棒グラフを作る">作業2　商品別の売上金額の棒グラフを作る</h2>
+<p>次に、商品別の売上金額をグラフにします。</p>
+<ol>
+<li><p>「商品名」と「売上金額」を選ぶ。</p></li>
+<li><p>棒グラフを作る。</p></li>
+<li><p>タイトルを <strong>「商品別　売上金額」</strong>
+にする。</p></li>
+<li><p>できれば、カテゴリごとに棒の色を変える。</p></li>
+</ol>
+<p>このグラフでは、販売数だけでは見えなかったことが見えます。
+たとえば、美容液は販売数が7個なので、あまり目立たないように見えます。
+しかし単価が高いので、売上金額では意外に大きいかもしれません。
+一方で、ハンドクリームは販売数はそこそこありますが、単価が低いので、売上金額ではそれほど大きくないかもしれません。
+このように、 <strong>よく売れる商品</strong> と
+<strong>売上金額が大きい商品</strong>
+は、必ずしも同じではありません。</p>
+<h2 id="作業3-散布図で-販売数-と-単価-を同時に見る">作業3　散布図で「販売数」と「単価」を同時に見る</h2>
+<p>次に、 「横軸：販売数」、 「縦軸：単価」 の散布図を作ります。</p>
+<ol>
+<li><p>「販売数」と「単価」を選ぶ。</p></li>
+<li><p>散布図を作る。</p></li>
+<li><p>点の近くに商品名を入れる。</p></li>
+<li><p>できれば、カテゴリごとに点の色を変える。</p></li>
+</ol>
+<p>この散布図では、点の位置によって商品の特徴を考えます。</p>
+<table class="data-table">
+<thead>
+<tr><th>位置</th><th>意味</th></tr>
+</thead>
+<tbody>
+<tr><td>右下</td><td>よく売れるが、単価は高すぎない商品</td></tr>
+<tr><td>左上</td><td>あまり売れないが、単価が高い商品</td></tr>
+<tr><td>右上</td><td>よく売れて、単価も高い重要商品</td></tr>
+<tr><td>左下</td><td>販売数も単価も小さめの商品</td></tr>
+</tbody>
+</table>
+<p>たとえば、化粧水は右側に出やすい商品です。
+美容液は左上に出やすい商品です。
+クッションファンデは、販売数は多すぎなくても単価が高いので、注意して見たい商品です。
+さらに、欠品日数も見てみましょう。 販売数が多く、欠品日数も多い商品は、
+<strong>本当はもっと売れたかもしれない商品</strong> です。</p>
+<h2 id="この例題で学んだこと">この例題で学んだこと</h2>
+<p>商品を1つの見方だけで判断すると、大事なことを見落とすことがあります。
+販売数だけを見ると、よく売れる商品が目立ちます。
+売上金額を見ると、単価が高い商品も大事だとわかります。
+欠品日数を見ると、「売りたかったのに売れなかった日」が見えてきます。
+在庫管理では、</p>
+<blockquote>
+<p><strong>たくさん売れる商品</strong><br>
+<strong>金額の大きい商品</strong><br/>
+<strong>切らすと困る商品</strong></br></p>
+</blockquote>
+<p>を分けて考えることが大切です。</p>
+<h2 id="第4章-問い-アレンジパート">第4章　問い・アレンジパート</h2>
+<div class="worksheet"><h2 class="worksheet-title" id="ワークシート4">ワークシート4</h2>
+<p>
+<strong>テーマ：どの商品を大事に管理するべきか</strong></p>
+<p><strong>1. 気になる問いを1つ選びましょう。</strong></p>
+<table class="data-table">
+<tbody>
+<tr><td>□ 販売数が多い商品と、売上金額が大きい商品は同じだろうか。</td></tr>
+<tr><td>□ 単価が高い商品は、少量だけ仕入れるほうがよいのだろうか。</td></tr>
+<tr><td>□ 欠品日数が多い商品は、次の週にどれくらい増やすべきだろうか。</td></tr>
+<tr><td>□ 売れ残ると困る商品と、切らすと困る商品はどう違うのだろうか。</td></tr>
+<tr><td>□ 自分たちで考えた問い：＿＿＿＿＿＿＿＿＿＿＿＿</td></tr>
+</tbody>
+</table>
+<p><strong>2.
+その問いに答えるために見たい数値を選びましょう。</strong></p>
+<table class="data-table">
+<tbody>
+<tr><td>□ 販売数</td><td>□ 単価</td><td>□ 売上金額</td><td>□ 欠品日数</td></tr>
+<tr><td>□ カテゴリ</td><td>□ 利益</td><td>□ 利益率</td><td>□ その他：＿＿＿＿＿＿＿＿＿＿＿＿</td></tr>
+</tbody>
+</table>
+<p><strong>3.
+重点管理したい商品をA・B・Cで考えてみましょう。</strong></p>
+<table class="data-table">
+<thead>
+<tr><th>ランク</th><th>商品名・カテゴリ</th><th>そう考えた理由</th></tr>
+</thead>
+<tbody>
+<tr><td>A</td><td></td><td></td></tr>
+<tr><td>B</td><td></td><td></td></tr>
+<tr><td>C</td><td></td><td></td></tr>
+</tbody>
+</table>
+<p><strong>4. 店の方針として、一言でまとめましょう。</strong></p>
+<p>この店では、＿＿＿＿＿＿＿＿＿＿＿＿
+を重点商品として、＿＿＿＿＿＿＿＿＿＿＿＿ に注意して管理する。</p>
+</div>
+<h2 id="アレンジのしかた">アレンジのしかた</h2>
+<h3 id="アレンジ1-利益を入れる">アレンジ1　利益を入れる</h3>
+<p>単価だけでなく、利益率を入れてみましょう。
+たとえば、次の列を追加します。</p>
+<ul>
+<li><p>仕入れ値</p></li>
+<li><p>利益：利益 ＝ 売価 -
+仕入れ値</p></li>
+<li><p>利益率</p></li>
+</ul>
+<p>こうすると、売上金額だけでなく、店にとってどの商品が大事かをもっと深く考えられます。</p>
+<h3 id="アレンジ2-欠品リスクを点の大きさで表す">アレンジ2　欠品リスクを点の大きさで表す</h3>
+<p>散布図で、欠品日数が多い商品ほど点を大きくしてみましょう。 すると、
+販売数・単価・欠品日数 の3つを1つの図で見ることができます。
+これは少し発展的ですが、図としてとても見やすくなります。</p>
+<h3 id="アレンジ3-a-b-cに分ける">アレンジ3　A・B・Cに分ける</h3>
+<p>商品を次のように分けてみましょう。</p>
+<table class="data-table">
+<thead>
+<tr><th>ランク</th><th>意味</th><th>在庫方針</th></tr>
+</thead>
+<tbody>
+<tr><td>A</td><td>とても大事な商品</td><td>欠品しないように多めに見る</td></tr>
+<tr><td>B</td><td>ふつうに大事な商品</td><td>売れ方を見ながら調整する</td></tr>
+<tr><td>C</td><td>試しに置く商品</td><td>少量から始める</td></tr>
+</tbody>
+</table>
+<p>どの商品をAにするかは、班によって違ってよいです。 大切なのは、
+<strong>なぜその商品をAにしたのか</strong>
+をデータで説明することです。</p>
+<nav aria-label="前後の章" class="chapter-pager">
+<a href="chapter3.html">← 第3章</a>
+<a href="index.html">章一覧</a>
+<a href="chapter5.html">第5章 →</a>
+</nav>
+</article>
+<aside class="page-toc">
+<p class="toc-title">この章の目次</p>
+<ol><li><a href="#第4章-例題パート">第4章　例題パート</a></li><li><a href="#例題4-商品を-売れ方-と-金額-で分けて見てみよう">例題4　商品を「売れ方」と「金額」で分けて見てみよう</a></li><li><a href="#作業1-売上金額を計算する">作業1　売上金額を計算する</a></li><li><a href="#作業2-商品別の売上金額の棒グラフを作る">作業2　商品別の売上金額の棒グラフを作る</a></li><li><a href="#作業3-散布図で-販売数-と-単価-を同時に見る">作業3　散布図で「販売数」と「単価」を同時に見る</a></li><li><a href="#この例題で学んだこと">この例題で学んだこと</a></li></ol>
+</aside>
+</div>
+</main>
+<footer class="site-footer">
+<p>東京海洋大学 海洋工学部 流通情報工学科</p>
+</footer>
+</body>
+</html>
