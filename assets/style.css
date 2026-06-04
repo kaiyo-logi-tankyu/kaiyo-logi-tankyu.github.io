@@ -273,6 +273,35 @@ blockquote {
 }
 .data-table td[colspan] { text-align: center; color: var(--brand); font-weight: 800; }
 
+
+.trouble-table {
+  border: 1px solid #b7dcf6;
+  background: #f8fbff;
+}
+
+.trouble-table th,
+.trouble-table td {
+  background: #f8fbff;
+  border-color: #b7dcf6;
+  color: var(--ink);
+  font-weight: 400;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.75;
+}
+
+.trouble-table th strong,
+.trouble-table td strong {
+  color: var(--brand);
+  font-weight: 800;
+}
+
+.trouble-table th,
+.trouble-table td {
+  padding: 14px 16px;
+}
+
+
 .chapter-pager {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
